@@ -21,9 +21,8 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Sergey17777/Ahj-dom/issues"
-  },
-  "homepage": "https://github.com/Sergey17777/Ahj-dom#readme"
-}
+  }, 
+"homepage": "https://github.com/Sergey17777/Ahj-dom#readme",
  "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
