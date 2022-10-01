@@ -1,23 +1,34 @@
-* {
-  box-sizing: border-box;
+body {
+    color: #999;
 }
-#board {
-  display: flex;
-    margin: auto;
-    width: 500px;
-    height: 500px;
-    background-color: rgb(175, 143, 225);
+
+img {
+    position: relative;
+    object-fit: cover;
+
+}
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
-.game-cell {
-  width: 125px;
-    height: 125px;
-    border: 2px solid white;
+.row {
+    display: flex;
+    flex-direction: row;
 }
 
-.image {
-  background-image: url('../img/goblin.png');
-    background-repeat: no-repeat;
-    background-position: center;
+.cell {
+    background: rgb(0, 0, 0);
+    color: white;
+    text-align: center;
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+    width: 100px;
+    height: 100px;
 }

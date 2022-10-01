@@ -1,2 +1,6 @@
 import './css/style.css';
-import './js/app';
+
+import GoblinGame from './js/app';
+
+const game = new GoblinGame(4);
+game.init();

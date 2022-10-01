@@ -1,34 +1,41 @@
-// TODO: write code here
-export default class Game {
-  constructor(boardEl) {
-    this.boardEl = boardEl;
-    this.boardsCells = [];
-    this.random = 0;
+import img from '../img/goblin.png';
+
+export default class GoblinGame {
+  constructor(fieldSize) {
+    this.fieldSize = fieldSize;
+    this.goblin = document.createElement('img');
+    this.goblin.src = img;
+    this.currentPos = 0;
   }
 
-  createBoard() {
-    const boardEl = document.getElementById('board');
-    for (let i = 1; i < 17; i += 1) {
-      const cell = document.createElement('div');
-      cell.classList.add('game-cell');
-      boardEl.appendChild(cell);
-    }
-    this.randomImg();
+  generateRand() {
+    return Math.floor(Math.random() * (this.fieldSize ** 2 - 1));
   }
 
-  randomImg() {
-    setInterval(() => {
-      this.boardsCells = [...document.querySelectorAll('.game-cell')];
-      this.boardsCells.forEach((elem) => {
-        if (elem.classList.contains('image')) {
-          elem.classList.remove('image');
+  init() {
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.createElement('div');
+      container.className = 'container';
+      document.body.appendChild(container);
+      let n = 0;
+      for (let i = 0; i < this.fieldSize; i += 1) {
+        const row = document.createElement('div');
+        row.className = 'row';
+        container.insertAdjacentElement('afterbegin', row);
+        for (let j = 0; j < this.fieldSize; j += 1) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.id = `cell_${n}`;
+          row.insertAdjacentElement('beforeend', cell);
+          n += 1;
         }
-      });
-      const random = Math.floor(Math.random() * this.boardsCells.length);
-      return this.boardsCells[random].classList.add('image');
-    }, 1000);
+      }
+    });
+
+    setInterval(() => {
+      document.getElementById(`cell_${this.currentPos}`).innerHTML = '';
+      this.currentPos = this.generateRand();
+      document.getElementById(`cell_${this.currentPos}`).insertAdjacentElement('afterbegin', this.goblin);
+    }, 500);
   }
 }
-
-const gamesBoard = new Game();
-gamesBoard.createBoard();
