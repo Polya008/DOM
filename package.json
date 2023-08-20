@@ -5,7 +5,7 @@
   "main": "webpack.common.js",
   "scripts": {
     "test": "jest --coverage",
-    "build": "webpack --mode-production",
+    "build": "webpack --mode production",
     "lint": "eslint."
   },
   "repository": {
