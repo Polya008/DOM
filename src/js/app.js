@@ -1,41 +1,85 @@
 import img from '../img/goblin.png';
 
 export default class GoblinGame {
-  constructor(fieldSize) {
-    this.fieldSize = fieldSize;
-    this.goblin = document.createElement('img');
-    this.goblin.src = img;
-    this.currentPos = 0;
-  }
+	element = null;
 
-  generateRand() {
-    return Math.floor(Math.random() * (this.fieldSize ** 2 - 1));
-  }
+	constructor() {
+		this.element = document.createElement('img');
+		this.element.setAttribute('src', 'https://png.pngtree.com/png-clipart/20211022/ourmid/pngtree-goblin-goblin-elf-png-image_4004208.png');
+		this.element.className = "goblin-img";
+	}
 
-  init() {
-    document.addEventListener('DOMContentLoaded', () => {
-      const container = document.createElement('div');
-      container.className = 'container';
-      document.body.appendChild(container);
-      let n = 0;
-      for (let i = 0; i < this.fieldSize; i += 1) {
-        const row = document.createElement('div');
-        row.className = 'row';
-        container.insertAdjacentElement('afterbegin', row);
-        for (let j = 0; j < this.fieldSize; j += 1) {
-          const cell = document.createElement('div');
-          cell.className = 'cell';
-          cell.id = `cell_${n}`;
-          row.insertAdjacentElement('beforeend', cell);
-          n += 1;
-        }
-      }
-    });
-
-    setInterval(() => {
-      document.getElementById(`cell_${this.currentPos}`).innerHTML = '';
-      this.currentPos = this.generateRand();
-      document.getElementById(`cell_${this.currentPos}`).insertAdjacentElement('afterbegin', this.goblin);
-    }, 500);
-  }
+	get element() {
+		return element;
+	}
 }
+
+class Field {
+	cells = [];
+	size = 16;
+	parentElement = null;
+	parent = null;
+
+	constructor(parent) {
+		this.parent = parent;
+	}
+
+	createField() {
+		let cells = '';
+		for (let i = 0; i < this.size; i++) {
+			cells += '<div class="cell"></div>';
+		}
+		this.parent.innerHTML = cells;
+		this.cells = this.parent.children;
+	}
+
+	get size() {
+		return this.size;
+	}
+
+	getCell(index) {
+		return this.cells[index];
+	}
+}
+
+class GameController {
+	field = null;
+	goblin = null;
+	interval = null;
+	lastIndex = 0;
+
+	constructor(goblin, field) {
+		this.goblin = goblin;
+		this.field = field;
+	}
+
+	init() {
+		this.interval = setInterval(() => {
+			this.lastIndex = this.generateIndex(this.field.size, this.lastIndex);
+			this.changeCell(this.lastIndex);
+		}, 1000)
+	}
+
+	stop() {
+		clearInterval(this.interval);
+	}
+
+	changeCell(index) {
+		this.field.getCell(index).append(this.goblin.element)
+	}
+
+	generateIndex(length, lastOne) {
+		const i = Math.floor(Math.random() * length);
+		return i === lastOne ? this.generateIndex(length, lastOne) : i;
+	}
+}
+
+const goblin = new Goblin();
+const field = new Field(document.querySelector('.field'));
+field.createField();
+
+const controller = new GameController(goblin, field);
+
+controller.init()
+
+setTimeout(controller.stop.bind(controller), 20000)
