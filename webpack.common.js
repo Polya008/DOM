@@ -33,6 +33,8 @@ module.exports = {
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
+        type: 'asset/resource',
+        dependency: { not: ['url'] },
         use: [
           'file-loader',
           {
@@ -50,6 +52,7 @@ module.exports = {
         },
           },
         ],
+         type: 'javascript/auto'
       },
     ],
   },

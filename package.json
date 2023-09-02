@@ -2,7 +2,7 @@
   "name": "dom",
   "version": "1.0.0",
   "description": "home-work",
-  "main": "webpack.common.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
     "build": "webpack --mode production",
