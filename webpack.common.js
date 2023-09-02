@@ -61,9 +61,9 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html',
     }),
-    new MiniCssExtractPlugin({
-      filename: './src/css/style.css',
-      //chunkFilename: '[id].css',
-    }),
+    new MiniCssExtractPlugin(
+      {
+        filename: '[name].css',
+      }),
   ],
 };
