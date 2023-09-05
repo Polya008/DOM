@@ -18,7 +18,7 @@ export default class Field {
 	}
 
 	get size() {
-		return this.size;
+		return this._size;
 	}
 
 	getCell(index) {

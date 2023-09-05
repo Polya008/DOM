@@ -1,6 +1,7 @@
 
 import Field from './Field.js';
-import GameController from './GameController.js'
+import GameController from './GameController.js':
+import Goblin from './GoblinGame.js'
 
 
 const goblin = new Goblin();

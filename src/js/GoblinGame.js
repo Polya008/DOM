@@ -8,6 +8,6 @@ export default class GoblinGame {
 	}
 
 	get element() {
-		return element;
+		return this.element;
 	}
 }
