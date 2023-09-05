@@ -34,25 +34,7 @@ module.exports = {
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         type: 'asset/resource',
-        dependency: { not: ['url'] },
-        use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
-            }
-              optipng: {
-          enabled: false,
-        },
-        pngquant: {
-          quality: [0.65, 0.90],
-          speed: 4
-        },
-          },
-        ],
-         type: 'javascript/auto'
+        
       },
     ],
   },

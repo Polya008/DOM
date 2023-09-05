@@ -1,6 +1,4 @@
-import img from '../img/goblin.png';
 
-import GoblinGame from './GoblinGame.js';
 import Field from './Field.js';
 import GameController from './GameController.js'
 
