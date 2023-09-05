@@ -17,7 +17,7 @@ export default class Field {
 		this.cells = this.parent.children;
 	}
 
-	get size() {
+	get getSize() {
 		return this._size;
 	}
 

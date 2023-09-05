@@ -7,7 +7,7 @@ export default class GoblinGame {
 		this.element.className = "goblin-img";
 	}
 
-	get element() {
+	get getElement() {
 		return this.element;
 	}
 }
