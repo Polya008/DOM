@@ -4,7 +4,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   target: 'web',
-  testEnvironment: 'jsdom',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
