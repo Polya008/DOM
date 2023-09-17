@@ -13,7 +13,7 @@ export default class Field {
 		for (let i = 0; i < this.size; i++) {
 			cells += '<div class="cell"></div>';
 		}
-		this.parent.innerHTML += cells;
+		this.parentElement.innerHTML = cells;
 		this.cells = this.parent.children;
 	}
 
