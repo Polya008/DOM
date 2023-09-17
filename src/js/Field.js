@@ -13,7 +13,8 @@ export default class Field {
 		for (let i = 0; i < this.size; i++) {
 			cells += '<div class="cell"></div>';
 		}
-		this.parentElement.innerHTML = cells;
+		this.parent.innerHTML = cells;
+		this.parent.insertAdjacentElement('beforebegin', cells);
 		this.cells = this.parent.children;
 	}
 
