@@ -5,7 +5,7 @@ import Goblin from './GoblinGame.js';
 
 
 const goblin = new Goblin();
-const field = new Field(document.querySelector('.field'));
+const field = new Field();
 field.createField();
 
 const controller = new GameController(goblin, field);
