@@ -26,6 +26,6 @@ test('whether function define new position of goblin', () => {
   body.append(field);
   definePosition();
   const goblined = document.querySelector('.goblined');
-  const id = goblined.getAttribute('id');
+  const id = goblined.setAttribute('id');
   expect(id).toBeWithinRange(0, 3);
 });
