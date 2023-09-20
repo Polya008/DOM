@@ -11,9 +11,12 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.png/,
-        type: 'asset/resource',
+    {
+        test: /\.(png|svg|jpg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'img/[name].[ext]',
+        },
       },
       {
         test: /\.js/,
