@@ -1,15 +1,12 @@
+import createCells from './cells';
+import setSize from './setSize';
+import definePosition from './definePosition';
+import timerClock from './timer';
 
-import Field from './Field.js';
-import GameController from './GameController.js';
-import Goblin from './GoblinGame.js';
-
-
-const goblin = new Goblin();
-const field = new Field();
-field.createField();
-
-const controller = new GameController(goblin, field);
-
-controller.init()
-
-setTimeout(controller.stop.bind(controller), 20000)
+const size = setSize();
+const field = createCells(size);
+const body = document.querySelector('body');
+body.append(field);
+field.style.setProperty('--side', size);
+definePosition();
+timerClock();
