@@ -1,12 +1,15 @@
-export default function createCells(definition) {
-  const field = document.createElement('div');
-  for (let i = 0; i < definition * definition; i += 1) {
-    const cell = document.createElement('div');
-    cell.className = 'cell';
-    cell.setAttribute('id', i);
-    cell.classList.add('goblined');
-    field.append(cell);
+export default function definePosition() {
+  const goblined = document.querySelector('.goblined');
+  let exId = 999;
+  if (goblined) {
+    exId = +goblined.getAttribute('id');
+    goblined.classList.remove('goblined');
   }
-  field.className = 'field';
-  return field;
+  const cells = document.querySelectorAll('.cell');
+  const cellsArr = [...cells];
+  let id = 0;
+  do id = Math.floor(Math.random() * (cellsArr.length));
+  while (id === exId);
+  const cell = document.getElementById(id);
+  cell.classList.add('goblined');
 }
