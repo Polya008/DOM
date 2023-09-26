@@ -4,6 +4,7 @@ export default function createCells(definition) {
     const cell = document.createElement('div');
     cell.className = 'cell';
     cell.setAttribute('id', i);
+    cell.classList.add('goblined');
     field.append(cell);
   }
   field.className = 'field';
